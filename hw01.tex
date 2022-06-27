@@ -1,0 +1,67 @@
+\documentclass{ctexart}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{作业一：带皮亚诺余项的泰勒定理的叙述与证明}
+
+\author{明安图 \\ 统计学 3190101841}
+
+\begin{document}
+
+\maketitle
+
+多项式函数是各类函数中最简单的一种，用多项式逼近函数是近似计算和理论分析的一个重要内容．而泰勒定理提供了一种精度较高的方法．下面我们就介绍这一定理．
+\section{问题描述}
+若函数$f$在点$x_0$存在直至$n$阶导数，则有
+$$
+\begin{aligned}
+  f(x)=&f(x_0)+f^{'}(x_0)(x-x_0)+\frac{f^{''}(x_0)}{2!}(x-x_0)^2+\cdots \\
+  +&\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n+o((x-x_0)^n).
+\end{aligned}
+$$
+
+\section{证明}
+
+设
+$$
+\begin{aligned}
+  T_n(x)=&f(x_0)+f^{'}(x_0)(x-x_0)+\frac{f^{''}(x_0)}{2!}(x-x_0)^2+\cdots \\
+  +&\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n \\
+  R_n(x)=&f(x)-T_n(x) \\
+  Q_n(x)=&(x-x_0)^n
+\end{aligned}
+$$
+现在只要证明
+\begin{equation}
+  \lim_{x \rightarrow x_{0}}\frac{R_n(x)}{Q_n(x)}=0
+  \label{01}
+\end{equation}
+
+易知$f(x)$与$T_n(x)$在$x_0$有相同的函数值和相同的直至$n$阶导数值，即
+\begin{equation}
+  f^{(k)}(x_0)=T^{(k)}_n(x_0),k=0,1,2,\cdots,n.
+  \label{02}
+\end{equation}
+
+由关系式(\ref{02})可知，
+\begin{equation}
+  R_n(x_0)=R^{'}(x_0)=\cdots=R^{(n)}(x_0)=0
+\end{equation}
+
+并易知
+\begin{equation}
+  Q_0(x_0)=Q^{'}_n(x_0)=\cdots=Q^{(n-1)}_n(x_0)=0,Q^{(n)}(x_0)=n!
+\end{equation}
+
+因为$f^{(n)}(x_0)$存在，所以在点$x_0$的某邻域$U(x_0)$上$f$存在$n-1$阶导函数．于是当$x \in U^{\circ}(x_0)$且$x \rightarrow x_0$时，允许对式(\ref{01})接连使用洛必达法则$n-1$次，得到
+$$
+\begin{aligned}
+  \lim_{x \rightarrow x_{0}}\frac{R_n(x)}{Q_n(x)}&=\lim_{x \rightarrow x_{0}}\frac{R^{'}_n(x)}{Q^{'}_n(x)}=\cdots=\lim_{x \rightarrow x_{0}}\frac{R^{(n-1)}_n(x)}{Q^{(n-1)}_n(x)} \\
+  &=\lim_{x \rightarrow x_{0}}\frac{f^{(n-1)}(x)-f^{(n-1)}(x_0)-f^{(n)}(x_0)(x-x_0)}{n(n-1)\cdots2(x-x_0)} \\
+  &=\frac{1}{n!}\lim_{x \rightarrow x_{0}}\left[\frac{f^{(n-1)}(x)-f^{(n-1)}(x_0)}{x-x_0}-f^{(n)}(x_0)\right] \\
+  &=0
+\end{aligned}
+$$
+
+\end{document}
